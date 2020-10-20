@@ -7,14 +7,41 @@
 
 using namespace std;
 
-typedef struct Node {
-    string content = "";
-    struct Node* nextnode = NULL;
-}Node;
+#pragma region 链表
 
-void chaim(){
-    Node node1;
+typedef struct Link {
+    char elem;          //代表数据域
+    struct Link* next;  //代表指针域，指向直接后继元素
+}link;
+
+link* initLink() {
+    link* p = (link*)malloc(sizeof(link));//创建一个头结点
+    link* temp = p;//声明一个指针指向头结点，用于遍历链表
+    //生成链表
+    for (int i = 1; i < 5; i++) {
+        link* a = (link*)malloc(sizeof(link));
+        a->elem = i;
+        a->next = NULL;
+        temp->next = a;
+        temp = temp->next;
+    }
+    return p;
 }
+
+int selectElem(link* p, int elem) {
+    link* t = p;
+    int i = 1;
+    while (t->next) {
+        t = t->next;
+        if (t->elem == elem) {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}
+
+#pragma endregion
 
 #pragma region 位域
 
