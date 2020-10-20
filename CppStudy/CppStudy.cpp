@@ -88,9 +88,11 @@ void pointer() {
 
 int main()
 {
-    pointer();
-    structEXP();
+    //pointer();
+    //structEXP();
 
+    link* ini = initLink();
+    cout << selectElem(ini, 2) << endl;
 
     cout << endl;
 }
