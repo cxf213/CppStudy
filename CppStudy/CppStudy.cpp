@@ -2,11 +2,28 @@
 //
 
 #include <iostream>
+#include <string.h>
+#include <string>
+using namespace std;
+
+void pointer() {
+    int i = 0;
+    int *p1=NULL;
+    p1 = &i;
+
+    cout << *p1;
+
+}
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    pointer();
+
+    cout << endl;
 }
+
+
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
