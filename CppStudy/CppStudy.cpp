@@ -1,9 +1,9 @@
-﻿// CppStudy.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
+﻿
 
 #include <iostream>
-#include <string.h>
 #include <string>
+#include <vector>
+#include <array>
 
 using namespace std;
 
@@ -90,9 +90,9 @@ int main()
 {
     //pointer();
     //structEXP();
+    array<int, 5 > arr1 = {2, 4, 6, 8, 9};
 
-    link* ini = initLink();
-    cout << selectElem(ini, 2) << endl;
+
 
     cout << endl;
 }
