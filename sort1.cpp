@@ -11,10 +11,16 @@ void swap(int *a,int *b){
 	b=temp;
 }
 
-void sort(int *arr){
+int getlength(int *array)
+{
+	return (sizeof(*array) / sizeof(array[0]));
+}
+
+
+void Insertsort(int *arr){
 	int max=0;
-	for(int i=0;i<10;i++){
-		for(int j=i;j<10;j++){
+	for(int i=0;i<getlength(arr);i++){
+		for(int j=i;j<getlength(arr);j++){
 			if(arr[j]>arr[max]) max=j;
 		}
 		swap(arr[i],arr[max]);
@@ -32,7 +38,7 @@ int main(){
 	}
 	cout<<"-------------------------------"<<endl;
 	
-	sort(arr);
+	Insertsort(arr);
 	
 	for(int i=0;i<10;i++){
 		cout<<arr[i]<<endl;
