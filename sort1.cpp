@@ -16,8 +16,16 @@ int getlength(int *array)
 	return (sizeof(*array) / sizeof(array[0]));
 }
 
+void Quick_sort(int *arr,int lo,int hi){
+	//TODO:finish it plz
+}
 
-void Insertsort(int *arr){
+void Quicksort(int *arr){
+	Quick_sort(arr,0,getlength(arr));
+}
+
+
+void selectSort(int *arr){
 	int max=0;
 	for(int i=0;i<getlength(arr);i++){
 		for(int j=i;j<getlength(arr);j++){
@@ -38,7 +46,7 @@ int main(){
 	}
 	cout<<"-------------------------------"<<endl;
 	
-	Insertsort(arr);
+	selectSort(arr);
 	
 	for(int i=0;i<10;i++){
 		cout<<arr[i]<<endl;
