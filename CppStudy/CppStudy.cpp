@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include<time.h>
 
 using namespace std;
 
@@ -88,12 +89,21 @@ void pointer() {
 
 int main()
 {
+
+    double dur;
+    clock_t start, end;
+    start = clock();
+
     //pointer();
     //structEXP();
-    array<int, 5 > arr1 = {2, 4, 6, 8, 9};
+    //array<int, 5 > arr1 = { 2, 4, 6, 8, 9 };
+    double ans = 0;
+    for (int i = 0; i < 100000000; i++)
+    {
+        ans = ans + i + i * 0.235;
+    }
 
-
-
-    cout << endl;
+    end = clock();
+    dur = (double)(end - start);
+    printf("Use Time: %f ms\n", (dur*1000 / CLOCKS_PER_SEC));
 }
-
