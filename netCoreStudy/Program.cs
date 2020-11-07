@@ -14,6 +14,7 @@ namespace netCoreStudy
 
             Compar<int>.Max(12,65);
 
+
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
             Console.WriteLine("Use Time: {0} ms", ts.TotalMilliseconds);

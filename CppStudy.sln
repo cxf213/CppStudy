@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppStudy", "CppStudy\CppStudy.vcxproj", "{DBA5B046-D73B-4211-88B8-8AE1013A621A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netCoreStudy", "netCoreStudy\netCoreStudy.csproj", "{56E7761C-30DC-4235-8635-FC03FEB53443}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netCoreStudy", "netCoreStudy\netCoreStudy.csproj", "{56E7761C-30DC-4235-8635-FC03FEB53443}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework", "Homework\Homework.vcxproj", "{4C44DE4C-0BEA-4334-AD5F-D243FD100552}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,16 @@ Global
 		{56E7761C-30DC-4235-8635-FC03FEB53443}.Release|x64.Build.0 = Release|Any CPU
 		{56E7761C-30DC-4235-8635-FC03FEB53443}.Release|x86.ActiveCfg = Release|Any CPU
 		{56E7761C-30DC-4235-8635-FC03FEB53443}.Release|x86.Build.0 = Release|Any CPU
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Debug|x64.ActiveCfg = Debug|x64
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Debug|x64.Build.0 = Debug|x64
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Debug|x86.ActiveCfg = Debug|Win32
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Debug|x86.Build.0 = Debug|Win32
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Release|Any CPU.ActiveCfg = Release|Win32
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Release|x64.ActiveCfg = Release|x64
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Release|x64.Build.0 = Release|x64
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Release|x86.ActiveCfg = Release|Win32
+		{4C44DE4C-0BEA-4334-AD5F-D243FD100552}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
