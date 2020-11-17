@@ -7,18 +7,21 @@ namespace netCoreStudy
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
+            int[] arrTest = { 14, 56, 85, 42, 89, 56, 15, 48, 65, 25, 18 };
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
 
-            Compar<int>.Max(12,65);
-            datas();
+            Sort<int>.QuickSort(arrTest);
 
 
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
+            printArray(arrTest);
+
             Console.WriteLine();
             Console.WriteLine("Use Time: {0} ms", ts.TotalMilliseconds);
         }
@@ -35,6 +38,10 @@ namespace netCoreStudy
             
             i=list1[1];
             Console.WriteLine(i);
+        }
+        static void printArray(int[] arr)
+        {
+            foreach (int i in arr) Console.WriteLine(i);
         }
     }
 
