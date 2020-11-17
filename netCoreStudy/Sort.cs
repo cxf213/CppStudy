@@ -46,7 +46,12 @@ namespace netCoreStudy
         static public void QuickSort(T[] arr) { QuickSort(arr, 0, arr.Length - 1); }
         static private void QuickSort(T[] arr, int low, int hi)
         {
-            if (low >= hi) return;
+            
+            if (low >= hi - 8)
+            {
+                SectorInsertSort(arr, low, hi);
+                return;
+            }
 
             int lt = low + 1, ht = hi, i = low + 1;
             T v = arr[low];
