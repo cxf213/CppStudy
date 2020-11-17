@@ -27,11 +27,27 @@ namespace netCoreStudy
                 Swap(ref arr[i], ref arr[minOfIndex]);
             }
         }
-
+        static private void SectorInsertSort(T[] arr,int low,int high)
+        {
+            int minOfIndex = low;
+            for (int i = low; i < high; i++)
+            {
+                minOfIndex = i;
+                for (int j = i; j < arr.Length; j++)
+                {
+                    if (arr[j].CompareTo(arr[minOfIndex]) == -1)
+                    {
+                        minOfIndex = j;
+                    }
+                }
+                Swap(ref arr[i], ref arr[minOfIndex]);
+            }
+        }
         static public void QuickSort(T[] arr) { QuickSort(arr, 0, arr.Length - 1); }
         static private void QuickSort(T[] arr, int low, int hi)
         {
             if (low >= hi) return;
+
             int lt = low + 1, ht = hi, i = low + 1;
             T v = arr[low];
             while (i <= ht)
