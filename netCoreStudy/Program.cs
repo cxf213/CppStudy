@@ -15,6 +15,8 @@ namespace netCoreStudy
 
 
 
+
+
             sw.Stop();                      //计时器结束
             TimeSpan ts = sw.Elapsed;       //
 
