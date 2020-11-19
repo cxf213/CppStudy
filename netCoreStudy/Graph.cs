@@ -24,20 +24,22 @@ namespace netCoreStudy
                     string line;bool isV=true;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if(!line.Contains(" ")&&isV)
+                    if (!line.Contains(" ") && isV)
+                    {
+                        V = Convert.ToInt32(line);
+                        isV = false;
+                        Adj = new List<int>[V];
+                        for (int i = 0; i < V; i++)
                         {
-                            V = Convert.ToInt32(line);
-                            isV = false;
+                            Adj[i] = new List<int>();
                         }
-                        else if(!line.Contains(" "))
-                        {
-                            E = Convert.ToInt32(line);
-                        }
-                        else
-                        {
-                            string[] edges = line.Split(" ", StringSplitOptions.None);
-                            addEdge(Convert.ToInt32(edges[0]), Convert.ToInt32(edges[1]));
-                        }
+                    }
+                    else if (!line.Contains(" ")) E = 0;
+                    else
+                    {
+                        string[] edges = line.Split(" ", StringSplitOptions.None);
+                        addEdge(Convert.ToInt32(edges[0]), Convert.ToInt32(edges[1]));
+                    }
                     }
                 }
             }
@@ -50,9 +52,25 @@ namespace netCoreStudy
 
         void addEdge(int v,int w)
         {
-
+            Adj[v].Add(w);
+            Adj[w].Add(v);
+            E++;
         }
 
+        public override string ToString()
+        {
+            string s = V + " Vertices," + E + " Edges.\n";
+            for(int i = 0; i < V; i++)
+            {
+                s += V + ": ";
+                for(int j = 0; j < Adj[i].Count; j++)
+                {
+                    s += Adj[i][j]+" ";
+                }
+                s += "\n";
+            }
+            return s;
+        }
         
     }
 }

@@ -16,7 +16,6 @@ namespace netCoreStudy
             Graph<int> G1 = new Graph<int>(@"D:\Codes\CppStudy\netCoreStudy\tinyG.txt");
 
 
-
             sw.Stop();                      //计时器结束
             TimeSpan ts = sw.Elapsed;       //
 
