@@ -13,7 +13,7 @@ namespace netCoreStudy
             Stopwatch sw = new Stopwatch(); //
             sw.Start();                     //计时器开始
 
-
+            Graph<int> G1 = new Graph<int>(@"D:\Codes\CppStudy\netCoreStudy\tinyG.txt");
 
 
 

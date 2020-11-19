@@ -7,21 +7,37 @@ namespace netCoreStudy
 {
     class Graph<T>
     {
-        Graph(int V)
-        {
+        private int V = 0;
+        private int E = 0;
+        private List<int>[] Adj;
+        public int v() => V;
+        public int e() => E;
+        List<int> adj(int v) => Adj[v];
 
-        }
-        Graph(string filename)
+
+        public Graph(string filename)
         {
             try
             {
                 using (StreamReader sr = new StreamReader(filename))
                 {
-                    string line;
-
+                    string line;bool isV=true;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(line);
+                        if(!line.Contains(" ")&&isV)
+                        {
+                            V = Convert.ToInt32(line);
+                            isV = false;
+                        }
+                        else if(!line.Contains(" "))
+                        {
+                            E = Convert.ToInt32(line);
+                        }
+                        else
+                        {
+                            string[] edges = line.Split(" ", StringSplitOptions.None);
+                            addEdge(Convert.ToInt32(edges[0]), Convert.ToInt32(edges[1]));
+                        }
                     }
                 }
             }
@@ -31,5 +47,12 @@ namespace netCoreStudy
                 Console.WriteLine(e.Message);
             }
         }
+
+        void addEdge(int v,int w)
+        {
+
+        }
+
+        
     }
 }
