@@ -62,7 +62,7 @@ namespace netCoreStudy
             string s = V + " Vertices," + E + " Edges.\n";
             for(int i = 0; i < V; i++)
             {
-                s += V + ": ";
+                s += i + ": ";
                 for(int j = 0; j < Adj[i].Count; j++)
                 {
                     s += Adj[i][j]+" ";

@@ -14,6 +14,7 @@ namespace netCoreStudy
             sw.Start();                     //计时器开始
 
             Graph<int> G1 = new Graph<int>(@"D:\Codes\CppStudy\netCoreStudy\tinyG.txt");
+            Console.WriteLine(G1.ToString());
 
 
             sw.Stop();                      //计时器结束
