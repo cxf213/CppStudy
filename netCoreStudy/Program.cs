@@ -10,22 +10,24 @@ namespace netCoreStudy
         
         static void Main(string[] args)
         {
-            int[] arr = GetRandArray(100000);
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-
-            //Sort<int>.InsertSort(arr); //35708.5ms for 10kdata
-            Sort<int>.QuickSort(arr);    //38.1ms for 10kdata
+            Stopwatch sw = new Stopwatch(); //
+            sw.Start();                     //计时器开始
 
 
-            sw.Stop();
-            TimeSpan ts = sw.Elapsed;
-            //printArray(arr);
 
-            Console.WriteLine();
+            sw.Stop();                      //计时器结束
+            TimeSpan ts = sw.Elapsed;       //
+
+            Console.WriteLine("---------------------");
             Console.WriteLine("Use Time: {0} ms", ts.TotalMilliseconds);
+            Console.ReadLine();
         }
-
+        static void testExample()
+        {
+            int[] arr = GetRandArray(100000);
+            Sort<int>.InsertSort(arr); //35708.5ms for 10kdata
+            Sort<int>.QuickSort(arr);    //38.1ms for 10kdata
+        }
         static void datas()
         {
             int i = 0;

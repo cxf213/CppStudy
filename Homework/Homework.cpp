@@ -1,15 +1,20 @@
-﻿#include <stdio.h>
-#include <string.h>
+﻿
+#include <stdio.h>
 
-int main()
-{
-	char str1[] = "example 1.";
-	char str2[] = "example 2.";
-	for (int i = 0; i < strlen(str2);i++) {
-		str1[i] = str2[i];
-		if (str2[i] == '\0') break;
+int main() {
+	double an = 0, ave = 0, fin = 0;
+	int count = 0;
+	for (int i = 0; i < 10000; i++) {
+		scanf_s("%lf", &an);
+		if (an == 0) break;
+		if (an > 0) {
+			count++, fin = fin + an;
+		}
+	}
+	ave = fin / count;
+	if (fin != 0) {
+		printf("%g", ave);
+
 	}
 
-	printf("%s", str1);
 }
-
