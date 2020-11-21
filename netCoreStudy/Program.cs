@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace netCoreStudy
@@ -13,12 +12,14 @@ namespace netCoreStudy
             Stopwatch sw = new Stopwatch(); //
             sw.Start();                     //计时器开始
 
-            Graph<int> G1 = new Graph<int>(@"D:\Codes\CppStudy\netCoreStudy\tinyG.txt");
-            Console.WriteLine(G1.ToString());
+            Graph<int> G1 = new Graph<int>(@"D:\Codes\CppStudy\netCoreStudy\mediumG.txt");
+            
 
 
             sw.Stop();                      //计时器结束
             TimeSpan ts = sw.Elapsed;       //
+
+            Console.WriteLine(G1.ToString());
 
             Console.WriteLine("---------------------");
             Console.WriteLine("Use Time: {0} ms", ts.TotalMilliseconds);
