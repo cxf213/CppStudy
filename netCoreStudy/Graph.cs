@@ -82,11 +82,15 @@ namespace netCoreStudy
     class DepthFristPath
     {
         private bool[] marked;
+        public int[] edgeTo;
+        public int s;
         private int count;
 
         public DepthFristPath(Graph G, int s)
         {
             marked = new bool[G.v()];
+            edgeTo = new int[G.v()];
+            this.s = s;
             dfs(G, s);
         }
         private void dfs(Graph G, int v)
@@ -95,10 +99,49 @@ namespace netCoreStudy
             count++;
             for(int i = 0; i < G.adj(v).Count; i++)
             {
-                if (!marked[G.adj(v)[i]]) { dfs(G, G.adj(v)[i]); }
+                if (!marked[G.adj(v)[i]]) { 
+                    dfs(G, G.adj(v)[i]);
+                    edgeTo[G.adj(v)[i]] = v;
+                }
             }
         }
-        public bool Marked(int w) => marked[w];
+        public Stack<int> PathTo(int v)
+        {
+            if (!HasPathTo(v)) return null;
+            Stack<int> path = new Stack<int>();
+            for (int x = v; x != s; x = edgeTo[x])
+            {
+                path.Push(x);
+            }
+            path.Push(s);
+            return path;
+        }
+        public bool HasPathTo(int v) => marked[v];
         public int Count() => count;
+    }
+
+    class List_<T> : List<T>
+    {
+        public override string ToString()
+        {
+            string str = "";
+            for(int i = 0; i < base.Count; i++)
+            {
+                str += this[i]+" ";
+            }
+            return str;
+        }
+    }
+    class Stack_<T> : Stack<T>
+    {
+        public override string ToString()
+        {
+            string str = "";
+            for (int i = 0; i < base.Count; i++)
+            {
+                str += base.Pop() + " ";
+            }
+            return str;
+        }
     }
 }
