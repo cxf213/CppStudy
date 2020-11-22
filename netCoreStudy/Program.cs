@@ -12,7 +12,10 @@ namespace netCoreStudy
             Stopwatch sw = new Stopwatch(); //
             sw.Start();                     //计时器开始
 
-            Graph<int> G1 = new Graph<int>(@"D:\Codes\CppStudy\netCoreStudy\mediumG.txt");
+            Graph G1 = new Graph(@"D:\Codes\CppStudy\netCoreStudy\tinyG.txt");
+            DepthFristPath dfs1 = new DepthFristPath(G1, 0);
+            
+            
             
 
 
@@ -20,6 +23,7 @@ namespace netCoreStudy
             TimeSpan ts = sw.Elapsed;       //
 
             Console.WriteLine(G1.ToString());
+            Console.WriteLine(dfs1.Marked(6));
 
             Console.WriteLine("---------------------");
             Console.WriteLine("Use Time: {0} ms", ts.TotalMilliseconds);

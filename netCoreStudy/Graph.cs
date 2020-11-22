@@ -5,14 +5,14 @@ using System.Text;
 
 namespace netCoreStudy
 {
-    class Graph<T>
+    class Graph
     {
         private int V = 0;
         private int E = 0;
         private List<int>[] Adj;
         public int v() => V;
         public int e() => E;
-        List<int> adj(int v) => Adj[v];
+        public List<int> adj(int v) => Adj[v];
 
         /// <summary>
         /// 初始化一张无向图
@@ -77,5 +77,28 @@ namespace netCoreStudy
             return s;
         }
         
+    }
+
+    class DepthFristPath
+    {
+        private bool[] marked;
+        private int count;
+
+        public DepthFristPath(Graph G, int s)
+        {
+            marked = new bool[G.v()];
+            dfs(G, s);
+        }
+        private void dfs(Graph G, int v)
+        {
+            marked[v] = true;
+            count++;
+            for(int i = 0; i < G.adj(v).Count; i++)
+            {
+                if (!marked[G.adj(v)[i]]) { dfs(G, G.adj(v)[i]); }
+            }
+        }
+        public bool Marked(int w) => marked[w];
+        public int Count() => count;
     }
 }
