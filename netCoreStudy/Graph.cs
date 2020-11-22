@@ -53,8 +53,10 @@ namespace netCoreStudy
             }
         }
 
+
         void AddEdge(int v,int w)
         {
+            if (v > V || w > V) return;
             Adj[v].Add(w);
             Adj[w].Add(v);
             E++;
