@@ -4,33 +4,45 @@ using System.Text;
 
 namespace netCoreStudy.Graphs
 {
-    class DepthFristPath
+    class BreadthFirstPath
     {
         private bool[] marked;
         public int[] edgeTo;
         public int s;
-        private int count;
 
-        public DepthFristPath(Graph G, int s)
+        public BreadthFirstPath(Graph G,int s)
         {
             marked = new bool[G.v()];
             edgeTo = new int[G.v()];
             this.s = s;
-            dfs(G, s);
+            bfs(G, s);
         }
-        private void dfs(Graph G, int v)
+        private void bfs(Graph G,int s)
         {
-            marked[v] = true;
-            count++;
-            for (int i = 0; i < G.adj(v).Count; i++)
+            Queue<int> queue = new Queue<int>();
+            marked[s] = true;
+            queue.Enqueue(s);
+            while (queue.Count != 0)
             {
-                if (!marked[G.adj(v)[i]])
+                int v = queue.Dequeue();
+                foreach(var w in G.adj(v))
                 {
-                    dfs(G, G.adj(v)[i]);
-                    edgeTo[G.adj(v)[i]] = v;
+                    if (!marked[w])
+                    {
+                        edgeTo[w] = v;
+                        marked[w] = true;
+                        queue.Enqueue(w);
+                    }
                 }
+
             }
         }
+
+        public bool HasPathTo(int v)
+        {
+            return marked[v];
+        }
+
         public Stack<int> PathTo(int v)
         {
             if (!HasPathTo(v)) return null;
@@ -42,7 +54,5 @@ namespace netCoreStudy.Graphs
             path.Push(s);
             return path;
         }
-        public bool HasPathTo(int v) => marked[v];
-        public int Count() => count;
     }
 }

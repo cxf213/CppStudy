@@ -13,19 +13,19 @@ namespace netCoreStudy
             Stopwatch sw = new Stopwatch(); //
             sw.Start();                     //计时器开始
 
+
             Graph G1 = new Graph(@"D:\Codes\CppStudy\netCoreStudy\Graphs\tinyG.txt");
             DepthFristPath dfs1 = new DepthFristPath(G1, 0);
-
-
+            BreadthFirstPath bfs1 = new BreadthFirstPath(G1, 0);
 
 
 
             sw.Stop();                      //计时器结束
-            TimeSpan ts = sw.Elapsed;       //
-
-            Console.WriteLine(G1.ToString());
-            Console.WriteLine(dfs1.PathToString(3));
-
+            TimeSpan ts = sw.Elapsed;
+            foreach (var i in dfs1.PathTo(3)) Console.Write(i+"->");
+            Console.WriteLine();
+            foreach (var i in bfs1.PathTo(3)) Console.Write(i + "->");
+            Console.WriteLine();
             Console.WriteLine("---------------------");
             Console.WriteLine("Use Time: {0} ms", ts.TotalMilliseconds);
             Console.ReadLine();
@@ -35,13 +35,6 @@ namespace netCoreStudy
             int[] arr = GetRandArray(100000);
             Sort<int>.InsertSort(arr); //35708.5ms for 10kdata
             Sort<int>.QuickSort(arr);    //38.1ms for 10kdata
-        }
-        static void datas()
-        {
-        }
-        static void printArray(int[] arr)
-        {
-            foreach (int i in arr) Console.WriteLine(i);
         }
         static int[] GetRandArray(int len)
         {
@@ -60,6 +53,5 @@ namespace netCoreStudy
     {
         public static T Max(T a, T b) => a.CompareTo(b) > 0 ? a : b;
     }
-
 
 }
