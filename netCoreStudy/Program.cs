@@ -1,4 +1,5 @@
-﻿using System;
+﻿using netCoreStudy.Graphs;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -12,9 +13,8 @@ namespace netCoreStudy
             Stopwatch sw = new Stopwatch(); //
             sw.Start();                     //计时器开始
 
-            Graph G1 = new Graph(@"D:\Codes\CppStudy\netCoreStudy\tinyG.txt");
+            Graph G1 = new Graph(@"D:\Codes\CppStudy\netCoreStudy\Graphs\tinyG.txt");
             DepthFristPath dfs1 = new DepthFristPath(G1, 0);
-            Stack<int> ans = dfs1.PathTo(3);
 
 
 
@@ -24,7 +24,7 @@ namespace netCoreStudy
             TimeSpan ts = sw.Elapsed;       //
 
             Console.WriteLine(G1.ToString());
-            Console.WriteLine(ToString(ans));
+            Console.WriteLine(dfs1.PathToString(3));
 
             Console.WriteLine("---------------------");
             Console.WriteLine("Use Time: {0} ms", ts.TotalMilliseconds);
@@ -53,16 +53,6 @@ namespace netCoreStudy
                 arr[i] = rd.Next(1000,9999);
             }
             return arr;
-        }
-
-        public static string ToString(Stack<int> base1)
-        {
-            string str = "";
-            for (int i = 0; base1.Count>0; i++)
-            {
-                str += base1.Pop() + " ";
-            }
-            return str;
         }
     }
 
