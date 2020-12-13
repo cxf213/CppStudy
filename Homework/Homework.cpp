@@ -1,47 +1,17 @@
-﻿#include <stdio.h>
-#include <math.h>
-void getAverge(struct students stu);
-void getAverge(struct students stu[], int nums);
-struct students {
-	double score[5];
-	double averge;
-};
-void getAverge(struct students stu)	
+﻿#include <string>
+#include <iostream>
+#include <regex>
+using namespace std;
+int main1()
 {
-	double sum = 0;
-	for (int i = 0; i < 5; i++) {sum += stu.score[i];}
-	stu.averge = sum / 5;
-}
-void getAverge(struct students stu[],int nums) {		//第一题
-	for (int i = 0; i < nums; i++) getAverge(stu[i]);
-}
-double getAvergeOfClass(struct students stu[], int classes,int nums) {	//第二题
-	double sum = 0;
-	for (int i = 0; i < nums; i++) sum += stu[i].score[classes];
-	return sum / nums;
-}
-void getMax(struct students stu[]) {		//第三题
-	int maxstu=0,maxclass=0;
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 5; j++) {
-			if (stu[i].score[j] > stu[maxstu].score[maxclass]) {
-				maxstu = i; maxclass = j;
-			}
-		}
+	string in("abc123sda545Cas21");
+	regex reg("[A-Za-z]");
+	sregex_token_iterator pos(in.begin(), in.end(), reg, -1);
+	decltype(pos) end;
+	for (; pos != end; ++pos)
+	{
+		if (pos->str()!="") 
+		cout << pos->str() << endl;
 	}
-	printf("%dstu %dclass", maxstu, maxclass);
-}
-double getAvergeofAverge(struct students stu[], int nums) {
-	double sum = 0;
-	for (int i = 0; i < nums; i++) { sum += stu[i].averge; }
-	return sum / nums;
-}
-double getdx(struct students stu[], int nums) {		//第四题
-	double sum = 0;
-	for (int i = 0; i < nums; i++) { sum += pow(stu[i].averge,2)- pow(getAvergeofAverge(stu,nums),2); }
-	return sum / nums;
-}
-int main()
-{
-	struct students stu[10];
+	return 0;
 }

@@ -6,7 +6,7 @@ namespace netCoreStudy.Graphs
 {
     class DepthFristPath
     {
-        private bool[] marked;
+        private readonly bool[] marked;
         public int[] edgeTo;
         public int s;
         private int count;
@@ -16,9 +16,9 @@ namespace netCoreStudy.Graphs
             marked = new bool[G.v()];
             edgeTo = new int[G.v()];
             this.s = s;
-            dfs(G, s);
+            Dfs(G, s);
         }
-        private void dfs(Graph G, int v)
+        private void Dfs(Graph G, int v)
         {
             marked[v] = true;
             count++;
@@ -26,7 +26,7 @@ namespace netCoreStudy.Graphs
             {
                 if (!marked[G.adj(v)[i]])
                 {
-                    dfs(G, G.adj(v)[i]);
+                    Dfs(G, G.adj(v)[i]);
                     edgeTo[G.adj(v)[i]] = v;
                 }
             }

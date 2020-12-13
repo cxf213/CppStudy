@@ -7,9 +7,9 @@ namespace netCoreStudy.Graphs
 {
     class Graph
     {
-        private int V = 0;
+        private readonly int V = 0;
         private int E = 0;
-        private List<int>[] Adj;
+        private readonly List<int>[] Adj;
         public int v() => V;
         public int e() => E;
         public List<int> adj(int v) => Adj[v];

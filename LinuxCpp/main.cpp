@@ -1,7 +1,12 @@
 ﻿#include <cstdio>
 
+int* test() {
+    int a[2] = { 2,4 };
+    return a;
+}
+
 int main()
 {
-    printf("%s 向你问好!\n", "CXFLinuxCpp");
+    printf("%d",*test);
     return 0;
 }

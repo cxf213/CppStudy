@@ -86,10 +86,15 @@ void pointer() {
 
 }
 
+int* test() {
+    int a[2] = { 2,4 };
+    return a;
+}
+
 
 int main()
 {
-
+    cout << *test();
     double dur;
     clock_t start, end;
     start = clock();

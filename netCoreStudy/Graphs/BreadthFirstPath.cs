@@ -6,7 +6,7 @@ namespace netCoreStudy.Graphs
 {
     class BreadthFirstPath
     {
-        private bool[] marked;
+        private readonly bool[] marked;
         public int[] edgeTo;
         public int s;
 
@@ -15,9 +15,9 @@ namespace netCoreStudy.Graphs
             marked = new bool[G.v()];
             edgeTo = new int[G.v()];
             this.s = s;
-            bfs(G, s);
+            Bfs(G, s);
         }
-        private void bfs(Graph G,int s)
+        private void Bfs(Graph G,int s)
         {
             Queue<int> queue = new Queue<int>();
             marked[s] = true;
