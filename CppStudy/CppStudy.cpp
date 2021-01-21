@@ -94,6 +94,7 @@ int* test() {
 
 int main()
 {
+
     cout << *test();
     double dur;
     clock_t start, end;

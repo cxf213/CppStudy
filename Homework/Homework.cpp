@@ -2,7 +2,7 @@
 #include <iostream>
 #include <regex>
 using namespace std;
-int main1()
+int main()
 {
 	string in("abc123sda545Cas21");
 	regex reg("[A-Za-z]");
