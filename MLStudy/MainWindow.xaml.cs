@@ -21,6 +21,9 @@ namespace MLStudy
     /// </summary>
     public partial class MainWindow : Window
     {
+        //TODO: 整理代码
+        //TODO:添加对学习率的支持
+        //TODO:添加SOFTMAX的支持
         int dimensions = 2;
         int N = 4;
         List<float[]> datas;
