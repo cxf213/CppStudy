@@ -18,6 +18,8 @@ namespace MLStudy
             layer2 = new NodeLayer(2);
         }
 
+        public float Cost { get => cost; set => cost = value; }
+
         public float Calculate(float[] data)
         {
             datas = data;
@@ -31,8 +33,11 @@ namespace MLStudy
 
         public void Callback(float exceptAns)
         {
+            cost = (ans - exceptAns) * (ans - exceptAns) / 2;
+            //MessageBox.Show("Cost=" + cost);
             float dSig = Networks.Dcost(ans,exceptAns)* Networks.Dsigmoid(ans);
-            layer2.Callback(dSig);
+            float[] dlayer1 = Networks.ListMulAdds(layer2.Callback(dSig) , Networks.Dsigmoid(datas)); //第二层的反向传播
+            layer1.Callback(dlayer1);
         }
     }
 }

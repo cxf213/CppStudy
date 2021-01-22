@@ -1,11 +1,14 @@
-﻿using System;
+﻿#define SHOWa
+using System;
 using System.Collections.Generic;
 using System.Text;
+
 
 namespace MLStudy
 {
     class FlatLayer
     {
+        int N = 0;
         float[] paras;
         float[] bias;
         float[] datas;
@@ -13,9 +16,10 @@ namespace MLStudy
 
         float[] ddata;
 
-        float learnRate = 0.1f;
+        float learnRate = 1f;
         public FlatLayer(int N)
         {
+            this.N = N;
             paras = new float[N * N];
             bias = new float[N];
             ddata = new float[N];
@@ -35,14 +39,33 @@ namespace MLStudy
         }
         public void Callback(float[] x)
         {
+            this.bias = Networks.ListDimi(bias, x);
+            float[] dparas = new float[N*N];
+            for(int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    dparas[i * N + j] = origindata[i] * x[j] * learnRate;
+                }
+            }
+            this.paras = Networks.ListDimi(paras, dparas);
+#if SHOW
+            string s = "";
+            foreach (var i in dparas)
+                s += i + "\n";
+            s += "\n";
+            foreach (var i in x)
+                s += i + "\n";
 
+            System.Windows.MessageBox.Show(s);
+#endif
         }
 
     }
 
     class NodeLayer
     {
-
+        int N = 0;
         float[] paras;
         float[] bias;
         float[] datas;
@@ -50,9 +73,10 @@ namespace MLStudy
 
         float[] ddata;
 
-        float learnRate = 0.1f;
+        float learnRate = 1f;
         public NodeLayer(int N)
         {
+            this.N = N;
             ddata = new float[N];
             paras = new float[N];
             bias = new float[1];
@@ -78,6 +102,14 @@ namespace MLStudy
 
             bias[0] -= x;
             paras = Networks.ListDimi(paras, Networks.ListMulti(origindata, x * learnRate));
+#if SHOW
+            string s = "";
+            foreach (var i in Networks.ListMulti(origindata, x * learnRate))
+                s += i + "\n";
+            s += "\n";
+            s += x;
+            System.Windows.MessageBox.Show(s);
+#endif
             return ddata;
 
         }

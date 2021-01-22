@@ -8,7 +8,15 @@ namespace MLStudy
     class Networks
     {
 
-
+        public static float[] ListMulAdds(float[] data, float[] y)
+        {
+            float[] sum = new float[data.Length];
+            for (int i = 0; i < data.Length; i++)
+            {
+                sum[i] = data[i] * y[i];
+            }
+            return sum;
+        }
         public static float ListMulAdd(float[] data, float[] y)
         {
             float sum = 0f;
@@ -18,6 +26,13 @@ namespace MLStudy
             }
             return sum;
         }
+
+        /// <summary>
+        /// 矩阵与矩阵乘积
+        /// </summary>
+        /// <param name="data">矩阵1</param>
+        /// <param name="y">矩阵2</param>
+        /// <returns></returns>
         public static float[] ListMulti(float[] data, float[] y)
         {
             int len = data.Length;
@@ -32,6 +47,7 @@ namespace MLStudy
             }
             return ans;
         }
+
         public static float[] ListMulti(float[] data, float y)
         {
             int len = data.Length;
@@ -52,6 +68,12 @@ namespace MLStudy
             }
             return ans;
         }
+        /// <summary>
+        /// 矩阵相减输出x-y
+        /// </summary>
+        /// <param name="x">被减数</param>
+        /// <param name="y">减数</param>
+        /// <returns></returns>
         public static float[] ListDimi(float[] x, float[] y)
         {
             int len = x.Length;
@@ -72,7 +94,36 @@ namespace MLStudy
             }
             return x;
         }
+
         public static float Dsigmoid(float x) => x * (1 - x);
+        public static float[] Dsigmoid(float[] x)
+        {
+            for (int i = 0; i < x.Length; i++)
+            {
+                x[i] = Dsigmoid(x[i]);
+            }
+            return x;
+        }
+        public static float ReLu(float x) => x > 0 ? x : 0;
+        public static float DReLu(float x) => x > 0 ? 1 : 0;
+        public static float[] ReLu(float[] x)
+        {
+            for (int i = 0; i < x.Length; i++)
+            {
+                x[i] = ReLu(x[i]);
+            }
+            return x;
+        }
+        public static float[] DReLu(float[] x)
+        {
+            for (int i = 0; i < x.Length; i++)
+            {
+                x[i] = DReLu(x[i]);
+            }
+            return x;
+        }
+
+
         public static float Cost(float ans, float exceptans) => (exceptans - ans) * (exceptans - ans) / 2;
         public static float Dcost(float ans, float exceptans) => -1 * (exceptans - ans);
 
