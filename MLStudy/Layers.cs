@@ -1,7 +1,4 @@
 ﻿#define SHOWa
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace MLStudy
@@ -28,8 +25,8 @@ namespace MLStudy
 
         public void Initiate()
         {
-            paras = new float[] { 0.1f, 0.3f, 0.2f, 0.4f };
-            bias = new float[] { 0.7f, 0.8f };
+            paras = new float[] { 0.1f, 0.3f, 0.2f, 0.4f      };
+            bias = new float[] { 0.7f, 0.8f  };
         }
         public float[] Calculate(float[] data)
         {
@@ -85,7 +82,7 @@ namespace MLStudy
 
         public void Initiate()
         {
-            paras = new float[] { 0.5f, 0.6f };
+            paras = new float[] { 0.5f, 0.6f  };
             bias = new float[] { 0.9f };
         }
 

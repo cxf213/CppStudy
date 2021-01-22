@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
 
 namespace MLStudy
 {
-    class examML
+    public class examML
     {
         NodeLayer layer2;
         FlatLayer layer1;
@@ -34,7 +31,6 @@ namespace MLStudy
         public void Callback(float exceptAns)
         {
             cost = (ans - exceptAns) * (ans - exceptAns) / 2;
-            //MessageBox.Show("Cost=" + cost);
             float dSig = Networks.Dcost(ans,exceptAns)* Networks.Dsigmoid(ans);
             float[] dlayer1 = Networks.ListMulAdds(layer2.Callback(dSig) , Networks.Dsigmoid(datas)); //第二层的反向传播
             layer1.Callback(dlayer1);
