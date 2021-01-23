@@ -2,7 +2,7 @@
 
 namespace MLStudy
 {
-    public class examML//TODO:写个接口啥的
+    public class examML
     {
         NodeLayer layer2;
         FlatLayer layer1;

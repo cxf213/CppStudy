@@ -119,7 +119,7 @@ namespace MLStudy
             }
             return x;
         }
-        //TODO: 支持更多激活函数
+
 
         public static float Cost(float ans, float exceptans) => (exceptans - ans) * (exceptans - ans) / 2;
         public static float Dcost(float ans, float exceptans) => -1 * (exceptans - ans);
