@@ -1,8 +1,9 @@
 ﻿using System;
+using MLStudy.Layers;
 
-namespace MLStudy
+namespace MLStudy.Model
 {
-    public class examML
+    public class examML//TODO:写个接口啥的
     {
         NodeLayer layer2;
         FlatLayer layer1;
