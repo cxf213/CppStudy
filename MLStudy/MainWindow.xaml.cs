@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using MLStudy.Model;
 using MLStudy.Libs;
+using MLStudy.Layers;
 using System.Windows.Media;
 
 namespace MLStudy
@@ -35,9 +36,15 @@ namespace MLStudy
 
         private void Main(object sender, EventArgs e)
         {
-            MatrixF mat = new MatrixF(new float[3, 2] { { 1f, 2f }, { 2f, 3f }, { 3f, 4f } });
-            float[] A = new float[3] { 1f, 2f, 3f };
-            MessageBox.Show(mat.dot(A)[0] + " " + mat.dot(A)[1]);
+            LinerLayer l1 = new LinerLayer(2,2);
+            float[] res=l1.Forward(new float[2] { 1f, 0f });
+            string s = "";
+            foreach(var i in res)
+            {
+                s += i + "\n";
+            }
+            MessageBox.Show(s);
+
 
             datas = new List<float[]>();
             expect = new List<float>();

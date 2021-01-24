@@ -6,6 +6,14 @@ namespace MLStudy.Libs
 {
     class MatrixF
     {
+        //
+        //        |1  0  1|
+        //<N=2>   |0  1  2|
+        //          <M=3>
+        //
+        //就是{ {1, 0}, {0, 1}, {1, 2} }
+        //把一M维向量变换为N维
+
         int M = 1, N = 1;
         float[,] Mat;
         public override string ToString()
