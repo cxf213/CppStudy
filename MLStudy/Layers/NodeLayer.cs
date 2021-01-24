@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MLStudy.Libs;
 
 namespace MLStudy.Layers
 {
@@ -14,7 +15,9 @@ namespace MLStudy.Layers
 
         float[] ddata;
 
-        float learnRate = 1f;
+        private float learnRate = 1f;
+        public float LearnRate { get => learnRate; set => learnRate = value; }
+
         public NodeLayer(int N)
         {
             this.N = N;
@@ -42,7 +45,7 @@ namespace MLStudy.Layers
             ddata = Networks.ListMulti(paras, x);
 
             bias[0] -= x;
-            paras = Networks.ListDimi(paras, Networks.ListMulti(origindata, x * learnRate));
+            paras = Networks.ListDimi(paras, Networks.ListMulti(origindata, x * LearnRate));
             return ddata;
 
         }

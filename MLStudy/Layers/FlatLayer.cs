@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MLStudy.Libs;
 
 namespace MLStudy.Layers
 {
@@ -14,7 +15,9 @@ namespace MLStudy.Layers
 
         float[] ddata;
 
-        float learnRate = 1f;
+        private float learnRate = 1f;
+        public float LearnRate { get => learnRate; set => learnRate = value; }
+
         public FlatLayer(int N)
         {
             this.N = N;
@@ -43,7 +46,7 @@ namespace MLStudy.Layers
             {
                 for (int j = 0; j < N; j++)
                 {
-                    dparas[i * N + j] = origindata[i] * x[j] * learnRate;
+                    dparas[i * N + j] = origindata[i] * x[j] * LearnRate;
                 }
             }
             this.paras = Networks.ListDimi(paras, dparas);

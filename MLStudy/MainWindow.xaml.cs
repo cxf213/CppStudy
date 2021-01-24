@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using MLStudy.Model;
+using MLStudy.Libs;
 
 namespace MLStudy
 {
@@ -126,6 +127,8 @@ namespace MLStudy
                 ml = new examML();
                 isinitiated = true;
             }
+            ml.LearnRate = Convert.ToSingle(learnRate.Text);
+
             Stopwatch sw = new Stopwatch(); 
             sw.Start();                     
             sumTimes += Convert.ToInt32(traintime.Text);
@@ -215,5 +218,6 @@ namespace MLStudy
                 Canva2.Children.Add(el);
             }
         }
+
     }
 }
