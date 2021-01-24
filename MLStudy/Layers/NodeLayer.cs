@@ -30,14 +30,14 @@ namespace MLStudy.Layers
             bias = new float[] { 0.9f };
         }
 
-        public float Calculate(float[] data)
+        public float Forward(float[] data)
         {
             datas = data;
             origindata = data;
             return Networks.ListMulAdd(datas, paras) + bias[0];
         }
 
-        public float[] Callback(float x)
+        public float[] BackPropa(float x)
         {
             ddata = Networks.ListMulti(paras, x);
 

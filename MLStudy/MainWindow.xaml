@@ -38,6 +38,7 @@
         <TextBox x:Name="res_Copy" HorizontalAlignment="Left" Height="20" Margin="142,17,0,0" Text="1.0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" AllowDrop="False"/>
         <Label Content="学习组" HorizontalAlignment="Left" Margin="91,41,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="res_Copy1" HorizontalAlignment="Left" Height="20" Margin="142,45,0,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" AllowDrop="False"/>
+        <Label x:Name="sumTime" Content="已进行 0 次训练" HorizontalAlignment="Left" Height="24" Margin="216,17,0,0" VerticalAlignment="Top" Width="145"/>
 
     </Grid>
 </Window>

@@ -22,6 +22,7 @@ namespace MLStudy
     /// </summary>
     public partial class MainWindow : Window
     {
+        int sumTimes = 0;
         int dimensions = 2;
         int N = 4;
         List<float[]> datas;
@@ -49,7 +50,7 @@ namespace MLStudy
             flashcanve2();
         }
 
-        public float Run(examML ml, int trainTimes)
+        public float Run(Models ml, int trainTimes)
         {
             Random rd = new Random();
             float[] data = new float[dimensions];
@@ -65,7 +66,7 @@ namespace MLStudy
 
             }
 
-            float ave = 0f;
+            float sum = 0f;
             for (int i = 0; i < N+1; i++)
             {
                 int rnd = i;
@@ -76,14 +77,15 @@ namespace MLStudy
                 float val = ml.Calculate(data);
                 ml.Callback(expect[rnd]);
 
-                ave += ml.Cost;
+                sum += (val - expect[rnd])* (val - expect[rnd]);
                 //lb1.Items.Add(datas[rnd, 0] + " , " + datas[rnd, 1] + " : " + expect[rnd] + " 输出结果: " + val.ToString("0.00") );
             }
-            return ave;
+            return sum/2/(N+1);
         }
 
-        public void Draw(examML ml, int resolution)
+        public void Draw(Models ml, int resolution)
         {
+            Canva1.Children.Clear();
             for (int i = 0; i < resolution; i++)
             {
                 for (int j = 0; j < resolution; j++)
@@ -113,6 +115,8 @@ namespace MLStudy
             Canva1.Children.Clear();
             ml = new examML();
             isinitiated = true;
+            sumTimes = 0;
+            sumTime.Content = "已进行 " + sumTimes + " 次训练";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -122,21 +126,23 @@ namespace MLStudy
                 ml = new examML();
                 isinitiated = true;
             }
-            Stopwatch sw = new Stopwatch(); //
-            sw.Start();                     //计时器开始
+            Stopwatch sw = new Stopwatch(); 
+            sw.Start();                     
+            sumTimes += Convert.ToInt32(traintime.Text);
+            sumTime.Content = "已进行 " + sumTimes + " 次训练";
 
-            
+
             c1.Content = "平均损失: " + Run(ml, Convert.ToInt32(traintime.Text)).ToString("0.000");
 
-            sw.Stop();                      //计时器结束
+            sw.Stop();                      
             TimeSpan ts = sw.Elapsed;
             t1.Content = "计算用时: " + ts.TotalMilliseconds.ToString("0.00") + " ms";
 
 
-            Stopwatch sw2 = new Stopwatch(); //
-            sw2.Start();                     //计时器开始
+            Stopwatch sw2 = new Stopwatch(); 
+            sw2.Start();                     
             Draw(ml, Convert.ToInt32(res.Text));
-            sw2.Stop();                      //计时器结束
+            sw2.Stop();                      
             TimeSpan ts2 = sw2.Elapsed;
 
             t2.Content = "绘画用时: " + ts2.TotalMilliseconds.ToString("0.00") + " ms";
