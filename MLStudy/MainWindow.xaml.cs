@@ -8,13 +8,13 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using MLStudy.Model;
 using MLStudy.Libs;
+using System.Windows.Media;
 
 namespace MLStudy
 {
@@ -35,6 +35,10 @@ namespace MLStudy
 
         private void Main(object sender, EventArgs e)
         {
+            MatrixF mat = new MatrixF(new float[3, 2] { { 1f, 2f }, { 2f, 3f }, { 3f, 4f } });
+            float[] A = new float[3] { 1f, 2f, 3f };
+            MessageBox.Show(mat.dot(A)[0] + " " + mat.dot(A)[1]);
+
             datas = new List<float[]>();
             expect = new List<float>();
 
