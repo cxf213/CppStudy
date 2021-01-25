@@ -36,12 +36,15 @@ namespace MLStudy
 
         private void Main(object sender, EventArgs e)
         {
-            LinerLayer l1 = new LinerLayer(2,2);
-            float[] res=l1.Forward(new float[2] { 1f, 0f });
             string s = "";
-            foreach(var i in res)
+            LinearLayer l1 = new LinearLayer(2,1);
+            float[] res=l1.Forward(new float[2] { 0.69f, 0.75f });
+
+            float[] resback = l1.BackPropa(new float[1] { -0.02f});
+            resback = Networks.ListMulAdds( ActiveFunc.Dsigmoid(new float[2] { 0.69f, 0.75f }),resback);
+            foreach(var i in resback)
             {
-                s += i + "\n";
+                s += i + ", ";
             }
             MessageBox.Show(s);
 

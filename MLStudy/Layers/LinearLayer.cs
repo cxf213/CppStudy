@@ -5,27 +5,27 @@ using MLStudy.Libs;
 
 namespace MLStudy.Layers
 {
-    class LinerLayer
+    class LinearLayer
     {
         private int inCount = 1, outCount = 1;
         MatrixF paras;
         float[] bias;
-        float[] Inputs, DInputs;
+        float[] Inputs;
         public float LearnRate { get; set; }
 
-        public LinerLayer(int M, int N)
+        public LinearLayer(int M, int N)
         {
             inCount = M;
             outCount = N;
             paras = new MatrixF(inCount, outCount, 1);
             bias = new float[outCount];
-            Initiatize();
+            Initiatize2();
         }
 
         /// <summary>
         /// 仅供测试
         /// </summary>
-        private void Initiatize()
+        private void Initiatize1()
         {
             //  | 0.1   0.2 |   | 1 |   | 0.7   |
             //  |           | . |   | + |       |   运算
@@ -33,6 +33,14 @@ namespace MLStudy.Layers
 
             paras = new MatrixF(new float[2, 2] { { 0.1f, 0.3f }, { 0.2f, 0.4f } });
             bias = new float[2] { 0.7f, 0.8f };
+        }
+        /// <summary>
+        /// 仅供测试
+        /// </summary>
+        private void Initiatize2()
+        {
+            paras = new MatrixF(new float[2, 1] { { 0.5f }, { 0.6f } });
+            bias = new float[1] { 0.9f };
         }
 
         public float[] Forward(float[] data)
@@ -43,7 +51,25 @@ namespace MLStudy.Layers
         }
         public float[] BackPropa(float[] ForwardDiff)
         {
+            if (ForwardDiff.Length != outCount) return null;
+            Networks.ListDimi(bias, ForwardDiff);   //偏移参数的调整
+            for (int i = 0; i < outCount; i++)  //矩阵调整
+            {
+                for(int j = 0; j < inCount; j++)
+                {
+                    paras[j, i] = paras[j, i] - Inputs[j] * ForwardDiff[i];
+                }
+            }
+
             float[] BackDiff = new float[inCount];
+            for (int i = 0; i < inCount; i++)  
+            {
+                for (int j = 0; j < outCount; j++)
+                {
+                    BackDiff[i] = paras[i, j] * ForwardDiff[j];
+                }
+            }
+
             return BackDiff;
         }
     }

@@ -106,7 +106,10 @@ namespace MLStudy.Libs
             return res;
         }
 
+        private void Subtact(MatrixF Y) 
+        {
 
+        }
         private float[] ArrayMultiNum(float[] x,float y)
         {
             float[] res = new float[x.Length];
