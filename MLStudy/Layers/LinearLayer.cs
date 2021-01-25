@@ -19,7 +19,20 @@ namespace MLStudy.Layers
             outCount = N;
             paras = new MatrixF(inCount, outCount, 1);
             bias = new float[outCount];
-            Initiatize2();
+            Initiatize();
+        }
+
+        private void Initiatize()
+        {
+            Random rd = new Random();
+            for (int i = 0; i < outCount; i++)
+            {
+                for (int j = 0; j < inCount; j++)
+                {
+                    paras[j, i] = (float)(rd.NextDouble()*5f);
+                }
+                bias[i] = (float)(rd.NextDouble() * 5f);
+            }
         }
 
         /// <summary>
