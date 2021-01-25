@@ -36,6 +36,12 @@ namespace MLStudy
 
         private void Main(object sender, EventArgs e)
         {
+
+
+
+
+
+
             datas = new List<float[]>();
             expect = new List<float>();
 
@@ -110,12 +116,12 @@ namespace MLStudy
 
         }
 
-        examML ml;
+        NewModel ml;
         bool isinitiated = false;
         private void reset_Click(object sender, RoutedEventArgs e)
         {
             Canva1.Children.Clear();
-            ml = new examML();
+            ml = new NewModel();
             isinitiated = true;
             sumTimes = 0;
             sumTime.Content = "已进行 " + sumTimes + " 次训练";
@@ -125,7 +131,7 @@ namespace MLStudy
         {
             if (!isinitiated)
             {
-                ml = new examML();
+                ml = new NewModel();
                 isinitiated = true;
             }
             ml.LearnRate = Convert.ToSingle(learnRate.Text);
@@ -173,6 +179,7 @@ namespace MLStudy
         }
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+            if (lb1.SelectedItem == null) { MessageBox.Show("没选中内容"); return; }
             int id=0;
             try
             {

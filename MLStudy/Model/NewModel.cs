@@ -31,8 +31,8 @@ namespace MLStudy.Model
 
         public NewModel()
         {
-            layer1 = new LinearLayer(2, 2);
-            layer2 = new LinearLayer(2, 1);
+            layer1 = new LinearLayer(2, 3);
+            layer2 = new LinearLayer(3, 1);
         }
         public float Calculate(float[] data)
         {
@@ -50,6 +50,7 @@ namespace MLStudy.Model
         {
             cost = Networks.Cost(ans, exceptAns);
             float[] d = (new float[] { Networks.Dcost(ans, exceptAns) * ActiveFunc.Dsigmoid(ans) });
+            //System.Windows.MessageBox.Show(Networks.tostring(d));
             d = Networks.ListMulAdds(layer2.BackPropa(d), ActiveFunc.Dsigmoid(data2));
             layer1.BackPropa(d);
         }

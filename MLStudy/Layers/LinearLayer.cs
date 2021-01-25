@@ -11,7 +11,9 @@ namespace MLStudy.Layers
         MatrixF paras;
         float[] bias;
         float[] Inputs;
-        public float LearnRate { get; set; }
+
+        private float learnRate = 1f;
+        public float LearnRate { get => learnRate; set => learnRate = value; }
 
         public LinearLayer(int M, int N)
         {
@@ -20,7 +22,10 @@ namespace MLStudy.Layers
             paras = new MatrixF(inCount, outCount, 1);
             bias = new float[outCount];
             Initiatize();
+            //if (N == 1) Initiatize2();
+            //if (N == 2) Initiatize1();
         }
+        
 
         private void Initiatize()
         {
@@ -29,9 +34,9 @@ namespace MLStudy.Layers
             {
                 for (int j = 0; j < inCount; j++)
                 {
-                    paras[j, i] = (float)(rd.NextDouble()*5f);
+                    paras[j, i] = (float)(rd.NextDouble()+0.2f);
                 }
-                bias[i] = (float)(rd.NextDouble() * 5f);
+                bias[i] = (float)(rd.NextDouble()+0.2f);
             }
         }
 
@@ -65,12 +70,12 @@ namespace MLStudy.Layers
         public float[] BackPropa(float[] ForwardDiff)
         {
             if (ForwardDiff.Length != outCount) return null;
-            Networks.ListDimi(bias, ForwardDiff);   //偏移参数的调整
+            bias = Networks.ListDimi(bias, ForwardDiff);   //偏移参数的调整
             for (int i = 0; i < outCount; i++)  //矩阵调整
             {
                 for(int j = 0; j < inCount; j++)
                 {
-                    paras[j, i] = paras[j, i] - Inputs[j] * ForwardDiff[i];
+                    paras[j, i] = paras[j, i] - Inputs[j] * ForwardDiff[i] * learnRate;
                 }
             }
 

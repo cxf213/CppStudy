@@ -84,5 +84,14 @@ namespace MLStudy.Libs
         public static float Cost(float ans, float exceptans) => (exceptans - ans) * (exceptans - ans) / 2;
         public static float Dcost(float ans, float exceptans) => -1 * (exceptans - ans);
 
+        public static string tostring(float[] arr)
+        {
+            string s = "";
+            foreach(var i in arr)
+            {
+                s += i + ", ";
+            }
+            return s;
+        }
     }
 }
