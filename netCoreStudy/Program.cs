@@ -15,22 +15,20 @@ namespace netCoreStudy
             Stopwatch sw = new Stopwatch(); //
             sw.Start();                     //计时器开始
 
-            //deleApp1.TesDele.test();
-            //Graph G1 = new Graph(@"D:\Codes\CppStudy\netCoreStudy\Graphs\tinyG.txt");
-            //DepthFristPath dfs1 = new DepthFristPath(G1, 0);
-            //BreadthFirstPath bfs1 = new BreadthFirstPath(G1, 0);
-
-
-            double sum = 0;
-            for(int i = 0; i < 10000; i++)
+            Graph G1 = new Graph(@"D:\Codes\CppStudy\netCoreStudy\Graphs\tinyG.txt");
+            DepthFristPath dfs1 = new DepthFristPath(G1, 0);
+            BreadthFirstPath bfs1 = new BreadthFirstPath(G1, 0);
+            Stack<int> ans = bfs1.PathTo(3);
+            foreach(var i in ans)
             {
-                list2[i] = Math.Sin(i);
+                Console.Write(i+"->");
             }
-            for (int i = 1; i < 10000; i++)
+            Console.WriteLine();
+            ans = dfs1.PathTo(3);
+            foreach (var i in ans)
             {
-                sum += list2[i];
+                Console.Write(i + "->");
             }
-
 
             sw.Stop();                      //计时器结束
             TimeSpan ts = sw.Elapsed;
