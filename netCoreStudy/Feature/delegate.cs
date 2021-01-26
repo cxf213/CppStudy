@@ -1,7 +1,7 @@
 using System;
 
 delegate int NumberChanger(int n);
-namespace deleApp1{
+namespace netCoreStudy.Feature{
     class TesDele
     {
         static int num = 10;

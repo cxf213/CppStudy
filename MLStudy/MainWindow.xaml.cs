@@ -16,6 +16,7 @@ using MLStudy.Model;
 using MLStudy.Libs;
 using MLStudy.Layers;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace MLStudy
 {
@@ -134,15 +135,15 @@ namespace MLStudy
                 ml = new NewModel();
                 isinitiated = true;
             }
-            ml.LearnRate = Convert.ToSingle(learnRate.Text);
+            ml.LearnRate = Convert.ToSingle(Regex.Replace(learnRate.Text, @"[^0-9.]", ""));
 
             Stopwatch sw = new Stopwatch(); 
             sw.Start();                     
-            sumTimes += Convert.ToInt32(traintime.Text);
+            sumTimes += Convert.ToInt32(Regex.Replace(traintime.Text, @"[^0-9.]", ""));
             sumTime.Content = "已进行 " + sumTimes + " 次训练";
 
 
-            c1.Content = "平均损失: " + Run(ml, Convert.ToInt32(traintime.Text)).ToString("0.000");
+            c1.Content = "平均损失: " + Run(ml, Convert.ToInt32(Regex.Replace(traintime.Text, @"[^0-9.]", ""))).ToString("0.000");
 
             sw.Stop();                      
             TimeSpan ts = sw.Elapsed;
@@ -151,7 +152,7 @@ namespace MLStudy
 
             Stopwatch sw2 = new Stopwatch(); 
             sw2.Start();                     
-            Draw(ml, Convert.ToInt32(res.Text));
+            Draw(ml, Convert.ToInt32(Regex.Replace(res.Text, @"[^0-9.]", "")));
             sw2.Stop();                      
             TimeSpan ts2 = sw2.Elapsed;
 
@@ -161,17 +162,11 @@ namespace MLStudy
         private void add_Click(object sender, RoutedEventArgs e)
         {
             float x=0f, y=0f, exc=0f;
-            try
-            {
-                x = Convert.ToSingle(xval.Text);
-                y = Convert.ToSingle(yval.Text);
-                exc = Convert.ToSingle(val.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("INVAILED INPUT");
-            }
+            x = Convert.ToSingle(Regex.Replace(xval.Text, @"[^0-9.]", ""));
+            y = Convert.ToSingle(Regex.Replace(yval.Text, @"[^0-9.]", ""));
+            exc = Convert.ToSingle(Regex.Replace(val.Text, @"[^0-9.]", ""));
             N++;
+
             datas.Add(new float[] { x, y });
             expect.Add(exc);
             lb1.Items.Add(N + ". " + x + " , "+y+" : "+exc);

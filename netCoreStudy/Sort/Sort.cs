@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace netCoreStudy
+namespace netCoreStudy.Sort
 {
     static class Sort<T> where T:IComparable
     {
