@@ -8,7 +8,7 @@ namespace MLStudy.Model
 {
     class NewModel:Models
     {
-        float[] data1,data2;
+        float[]  data2;
         float cost = 0f;
         float ans;
         LinearLayer layer1;
@@ -36,7 +36,6 @@ namespace MLStudy.Model
         }
         public float Calculate(float[] data)
         {
-            data1 = data;
             data = layer1.Forward(data);
             data = ActiveFunc.Sigmoid(data);
             data2 = data;

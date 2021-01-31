@@ -102,14 +102,14 @@ namespace MLStudy
                     Rectangle r = new Rectangle
                     {
                         Fill = new SolidColorBrush(Color.FromRgb(
-                            (byte)(ml.Calculate(new float[] { i / (float)resolution, j / (float)resolution }) * 256),
+                            (byte)(ml.Calculate(new float[] { i / (float)resolution, j / (float)resolution }) * 254),
                             144,
                             159)),
                         Width = (Canva1.Width / resolution) + 1f,
                         Height = (Canva1.Height / resolution) + 1f
                     };
                     r.SetValue(Canvas.LeftProperty, i * (Canva1.Width / (float)resolution));
-                    r.SetValue(Canvas.TopProperty, (resolution-j) * ((Canva1.Height-2) / (float)resolution)-8);
+                    r.SetValue(Canvas.TopProperty, (resolution-j) * ((Canva1.Height-1) / (float)resolution)- Canva1.Height / resolution);
 
                     Canva1.Children.Add(r);
                 }
