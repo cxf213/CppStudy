@@ -11,10 +11,9 @@ namespace netCoreStudy
         
         static void Main(string[] args)
         {
-            double num = 12.3456;
-            Console.WriteLine($"the num is |{num:0.00}|");
 
-            Feature.Asyncs.main();
+
+            Feature.SimpleEvent.MainClass.Mains();
             Console.ReadLine();
         }
 
